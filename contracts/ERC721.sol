@@ -1,26 +1,5 @@
-// so we want to implement this contract
-// this comes from the standard, i didnt write the comments
-
-// not much, partly research partly some playing around with truffle and ganache
-// my mouse just ran out of battery goodnight
-
-contract ERC721Standard {
-  function balanceOf(address owner) public view virtual returns (uint256) {
-    // need to keep track of owners and there balances
-    // check balance hash with owner to get balance
-    // return balance
-    require(owner != address(0), "ERC721: balance query for the zero address");
-    return 1;
-  }
-
-  function ownerOf(uint256 tokenId) public view virtual returns (address) {
-    // need to keep track of owners
-    // check owner hash with tokenid to get owner
-    // return owner
-    require(owner != address(0), "ERC721: owner query for nonexistent token");
-    return owner;
-  }
-}
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.22 <0.9.0;
 
 /// @title ERC-721 Non-Fungible Token Standard
 /// @dev See https://eips.ethereum.org/EIPS/eip-721
@@ -56,6 +35,21 @@ interface ERC721 /* is ERC165 */ {
     /// @param _tokenId The identifier for an NFT
     /// @return The address of the owner of the NFT
     function ownerOf(uint256 _tokenId) external view returns (address);
+
+     /**
+   * @dev Transfers the ownership of an NFT from one address to another address.
+   * @notice Throws unless `msg.sender` is the current owner, an authorized operator, or the
+   * approved address for this NFT. Throws if `_from` is not the current owner. Throws if `_to` is
+   * the zero address. Throws if `_tokenId` is not a valid NFT. When transfer is complete, this
+   * function checks if `_to` is a smart contract (code size > 0). If so, it calls
+   * `onERC721Received` on `_to` and throws if the return value is not
+   * `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`.
+   * @param _from The current owner of the NFT.
+   * @param _to The new owner.
+   * @param _tokenId The NFT to transfer.
+   * @param _data Additional data with no specified format, sent in call to `_to`.
+   */
+   function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes calldata _data) external payable;
 
     /// @notice Transfers the ownership of an NFT from one address to another address
     /// @dev This works identically to the other function with an extra data parameter,
