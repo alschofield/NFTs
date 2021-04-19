@@ -6,3 +6,5 @@
 - if this is something you are interested in and would like to just do, bypass the ethereum contract and go straight to openseas, they should have all the stuff necessary to just pass in files and create an nft that you can sell, as always this is a dual purpose project to get more familiar with blockchain and nfts
 
 - using solidity, truffle and ganache to test
+
+- nft trading platform for specific industries? have a loose in with musicians so could start there, also learn more about it to help others create nfts
